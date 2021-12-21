@@ -12,7 +12,8 @@
 #include <stdint.h>
 
 /*!
- * @addtogroup SDMMC_COMMON
+ * @addtogroup sdmmc_common SDMMC Common
+ * @ingroup card
  * @{
  */
 
@@ -41,10 +42,12 @@
 #define MMC_CLOCK_HS400 (400000000U)
 
 /*!@brief mask convert  */
-#define SDMMC_MASK(bit) (1U << (bit))
+#define SDMMC_MASK(bit) (1UL << (bit))
 
-/*! @brief Card status bit in R1 */
-enum _sdmmc_r1_card_status_flag
+/*! @brief Card status bit in R1
+ * @anchor _sdmmc_r1_card_status_flag
+ */
+enum
 {
     kSDMMC_R1OutOfRangeFlag                  = 31, /*!< Out of range status bit */
     kSDMMC_R1AddressErrorFlag                = 30, /*!< Address error status bit */
@@ -97,8 +100,10 @@ typedef enum _sdmmc_r1_current_state
     kSDMMC_R1StateDisconnect  = 8U, /*!< R1: current state: disconnect */
 } sdmmc_r1_current_state_t;
 
-/*! @brief Error bit in SPI mode R1 */
-enum _sdspi_r1_error_status_flag
+/*! @brief Error bit in SPI mode R1
+ * @anchor _sdspi_r1_error_status_flag
+ */
+enum
 {
     kSDSPI_R1InIdleStateFlag        = (1U << 0U), /*!< In idle state */
     kSDSPI_R1EraseResetFlag         = (1U << 1U), /*!< Erase reset */
@@ -109,8 +114,10 @@ enum _sdspi_r1_error_status_flag
     kSDSPI_R1ParameterErrorFlag     = (1U << 6U), /*!< Parameter error */
 };
 
-/*! @brief Error bit in SPI mode R2 */
-enum _sdspi_r2_error_status_flag
+/*! @brief Error bit in SPI mode R2
+ * @anchor _sdspi_r2_error_status_flag
+ */
+enum
 {
     kSDSPI_R2CardLockedFlag            = (1U << 0U), /*!< Card is locked */
     kSDSPI_R2WriteProtectEraseSkip     = (1U << 1U), /*!< Write protect erase skip */
@@ -141,8 +148,10 @@ enum _sdspi_r2_error_status_flag
 
 /*! @brief Data error token mask */
 #define SDSPI_DATA_ERROR_TOKEN_MASK (0xFU)
-/*! @brief Data Error Token mask bit */
-enum _sdspi_data_error_token
+/*! @brief Data Error Token mask bit
+ * @anchor _sdspi_data_error_token
+ */
+enum
 {
     kSDSPI_DataErrorTokenError               = (1U << 0U), /*!< Data error */
     kSDSPI_DataErrorTokenCardControllerError = (1U << 1U), /*!< Card controller error */
@@ -200,8 +209,10 @@ typedef enum _sd_application_command
     kSD_ApplicationSendScr                 = 51U, /*!< Send Scr */
 } sd_application_command_t;
 
-/*! @brief SD card command class */
-enum _sdmmc_command_class
+/*! @brief SD card command class
+ * @anchor _sdmmc_command_class
+ */
+enum
 {
     kSDMMC_CommandClassBasic               = (1U << 0U),  /*!< Card command class 0 */
     kSDMMC_CommandClassBlockRead           = (1U << 2U),  /*!< Card command class 2 */
@@ -214,8 +225,10 @@ enum _sdmmc_command_class
     kSDMMC_CommandClassSwitch              = (1U << 10U), /*!< Card command class 10 */
 };
 
-/*! @brief OCR register in SD card */
-enum _sd_ocr_flag
+/*! @brief OCR register in SD card
+ * @anchor _sd_ocr_flag
+ */
+enum
 {
     kSD_OcrPowerUpBusyFlag         = 31,                             /*!< Power up busy status */
     kSD_OcrHostCapacitySupportFlag = 30,                             /*!< Card capacity status */
@@ -233,8 +246,10 @@ enum _sd_ocr_flag
     kSD_OcrVdd35_36Flag            = 23,                             /*!< VDD 3.4-3.5 */
 };
 
-/*! @brief SD card specification version number */
-enum _sd_specification_version
+/*! @brief SD card specification version number
+ * @anchor _sd_specification_version
+ */
+enum
 {
     kSD_SpecificationVersion1_0 = (1U << 0U), /*!< SD card version 1.0-1.01 */
     kSD_SpecificationVersion1_1 = (1U << 1U), /*!< SD card version 1.10 */
@@ -249,8 +264,10 @@ typedef enum _sd_switch_mode
     kSD_SwitchSet   = 1U, /*!< SD switch mode 1: set function */
 } sd_switch_mode_t;
 
-/*! @brief SD card CSD register flags */
-enum _sd_csd_flag
+/*! @brief SD card CSD register flags
+ * @anchor _sd_csd_flag
+ */
+enum
 {
     kSD_CsdReadBlockPartialFlag         = (1U << 0U),  /*!< Partial blocks for read allowed [79:79] */
     kSD_CsdWriteBlockMisalignFlag       = (1U << 1U),  /*!< Write block misalignment [78:78] */
@@ -265,15 +282,19 @@ enum _sd_csd_flag
     kSD_CsdTemporaryWriteProtectFlag    = (1U << 10U), /*!< Temporary write protection [12:12] */
 };
 
-/*! @brief SD card SCR register flags */
-enum _sd_scr_flag
+/*! @brief SD card SCR register flags
+ * @anchor _sd_scr_flag
+ */
+enum
 {
     kSD_ScrDataStatusAfterErase = (1U << 0U), /*!< Data status after erases [55:55] */
     kSD_ScrSdSpecification3     = (1U << 1U), /*!< Specification version 3.00 or higher [47:47]*/
 };
 
-/*! @brief SD timing function number */
-enum _sd_timing_function
+/*! @brief SD timing function number
+ * @anchor _sd_timing_function
+ */
+enum
 {
     kSD_FunctionSDR12Deafult   = 0U, /*!< SDR12 mode & default*/
     kSD_FunctionSDR25HighSpeed = 1U, /*!< SDR25 & high speed*/
@@ -282,8 +303,10 @@ enum _sd_timing_function
     kSD_FunctionDDR50          = 4U, /*!< DDR50 mode*/
 };
 
-/*! @brief SD group number */
-enum _sd_group_num
+/*! @brief SD group number
+ * @anchor _sd_group_num
+ */
+enum
 {
     kSD_GroupTimingMode     = 0U, /*!< acess mode group*/
     kSD_GroupCommandSystem  = 1U, /*!< command system group*/
@@ -354,8 +377,10 @@ typedef enum _sdmmc_command
 #ifndef SDIO_IO_READY_TIMEOUT_UNIT
 #define SDIO_IO_READY_TIMEOUT_UNIT (10U)
 #endif
-/*! @brief sdio card cccr register addr */
-enum _sdio_cccr_reg
+/*! @brief sdio card cccr register addr
+ * @anchor _sdio_cccr_reg
+ */
+enum
 {
     kSDIO_RegCCCRSdioVer        = 0x00U, /*!< CCCR & SDIO version*/
     kSDIO_RegSDVersion          = 0x01U, /*!< SD version */
@@ -417,13 +442,15 @@ typedef enum _sdio_func_num
 #define SDIO_EXTEND_CMD_OP_CODE_MASK            (0x04000000U) /*!< op code mask */
 #define SDIO_EXTEND_CMD_COUNT_MASK              (0x1FFU)      /*!< byte/block count mask */
 #define SDIO_MAX_BLOCK_SIZE                     (2048U)       /*!< max block size */
-#define SDIO_FBR_BASE(x)                        (x * 0x100U)  /*!< function basic register */
+#define SDIO_FBR_BASE(x)                        ((x)*0x100U)  /*!< function basic register */
 #define SDIO_TPL_CODE_END                       (0xFFU)       /*!< tuple end */
 #define SDIO_TPL_CODE_MANIFID                   (0x20U)       /*!< manufacturer ID */
 #define SDIO_TPL_CODE_FUNCID                    (0x21U)       /*!< function ID */
 #define SDIO_TPL_CODE_FUNCE                     (0x22U)       /*!< function extension tuple*/
-/*! @brief sdio command response flag */
-enum _sdio_status_flag
+/*! @brief sdio command response flag
+ * @anchor _sdio_status_flag
+ */
+enum
 {
     kSDIO_StatusCmdCRCError      = 0x8000U, /*!< the CRC check of the previous cmd fail*/
     kSDIO_StatusIllegalCmd       = 0x4000U, /*!< cmd illegal for the card state */
@@ -433,8 +460,10 @@ enum _sdio_status_flag
     kSDIO_StatusOutofRange       = 0x0100U, /*!<  cmd argument was out of the allowed range*/
 };
 
-/*! @brief sdio operation condition flag */
-enum _sdio_ocr_flag
+/*! @brief sdio operation condition flag
+ * @anchor _sdio_ocr_flag
+ */
+enum
 {
     kSDIO_OcrPowerUpBusyFlag = 31, /*!< Power up busy status */
     kSDIO_OcrIONumber        = 28, /*!< number of IO function */
@@ -463,29 +492,31 @@ enum _sdio_ocr_flag
 /*! @brief sdio ocr reigster IO NUMBER mask  */
 #define SDIO_OCR_IO_NUM_MASK (7U << kSDIO_OcrIONumber)
 
-/*! @brief sdio capability flag */
-enum _sdio_capability_flag
+/*! @brief sdio capability flag
+ * @anchor _sdio_capability_flag
+ */
+enum
 {
-    kSDIO_CCCRSupportDirectCmdDuringDataTrans = (1U << 0U),  /*!< support direct cmd during data transfer */
-    kSDIO_CCCRSupportMultiBlock               = (1U << 1U),  /*!< support multi block mode */
-    kSDIO_CCCRSupportReadWait                 = (1U << 2U),  /*!< support read wait */
-    kSDIO_CCCRSupportSuspendResume            = (1U << 3U),  /*!< support suspend resume */
-    kSDIO_CCCRSupportIntDuring4BitDataTrans   = (1U << 4U),  /*!< support interrupt during 4-bit data transfer */
-    kSDIO_CCCRSupportLowSpeed1Bit             = (1U << 6U),  /*!< support low speed 1bit mode */
-    kSDIO_CCCRSupportLowSpeed4Bit             = (1U << 7U),  /*!< support low speed 4bit mode */
-    kSDIO_CCCRSupportMasterPowerControl       = (1U << 8U),  /*!< support master power control */
-    kSDIO_CCCRSupportHighSpeed                = (1U << 9U),  /*!< support high speed */
-    kSDIO_CCCRSupportContinuousSPIInt         = (1U << 10U), /*!< support continuous SPI interrupt */
+    kSDIO_CCCRSupportDirectCmdDuringDataTrans = (1UL << 0U),  /*!< support direct cmd during data transfer */
+    kSDIO_CCCRSupportMultiBlock               = (1UL << 1U),  /*!< support multi block mode */
+    kSDIO_CCCRSupportReadWait                 = (1UL << 2U),  /*!< support read wait */
+    kSDIO_CCCRSupportSuspendResume            = (1UL << 3U),  /*!< support suspend resume */
+    kSDIO_CCCRSupportIntDuring4BitDataTrans   = (1UL << 4U),  /*!< support interrupt during 4-bit data transfer */
+    kSDIO_CCCRSupportLowSpeed1Bit             = (1UL << 6U),  /*!< support low speed 1bit mode */
+    kSDIO_CCCRSupportLowSpeed4Bit             = (1UL << 7U),  /*!< support low speed 4bit mode */
+    kSDIO_CCCRSupportMasterPowerControl       = (1UL << 8U),  /*!< support master power control */
+    kSDIO_CCCRSupportHighSpeed                = (1UL << 9U),  /*!< support high speed */
+    kSDIO_CCCRSupportContinuousSPIInt         = (1UL << 10U), /*!< support continuous SPI interrupt */
 };
 /*! @brief UHS timing mode flag */
-#define SDIO_CCCR_SUPPORT_HIGHSPEED     (1u << 9U)
-#define SDIO_CCCR_SUPPORT_SDR50         (1U << 11U)
-#define SDIO_CCCR_SUPPORT_SDR104        (1U << 12U)
-#define SDIO_CCCR_SUPPORT_DDR50         (1U << 13U)
-#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_A (1U << 14U)
-#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_C (1U << 15U)
-#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_D (1U << 16U)
-#define SDIO_CCCR_SUPPORT_ASYNC_INT     (1U << 17U)
+#define SDIO_CCCR_SUPPORT_HIGHSPEED     (1UL << 9U)
+#define SDIO_CCCR_SUPPORT_SDR50         (1UL << 11U)
+#define SDIO_CCCR_SUPPORT_SDR104        (1UL << 12U)
+#define SDIO_CCCR_SUPPORT_DDR50         (1UL << 13U)
+#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_A (1UL << 14U)
+#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_C (1UL << 15U)
+#define SDIO_CCCR_SUPPORT_DRIVER_TYPE_D (1UL << 16U)
+#define SDIO_CCCR_SUPPORT_ASYNC_INT     (1UL << 17U)
 
 #define SDIO_CCCR_BUS_SPEED_MASK        (7U << 1U)
 #define SDIO_CCCR_ENABLE_HIGHSPEED_MODE (1U << 1U)
@@ -505,10 +536,12 @@ enum _sdio_capability_flag
 #define SDIO_CCCR_ENABLE_AYNC_INT (1U << 1U)
 
 /*! @brief 8 bit data bus flag*/
-#define SDIO_CCCR_SUPPORT_8BIT_BUS           (1U << 18U)
+#define SDIO_CCCR_SUPPORT_8BIT_BUS           (1UL << 18U)
 #define SDIO_CCCR_SUPPORT_LOW_SPEED_4BIT_BUS (1U << 7U)
-/*! @brief sdio fbr flag */
-enum _sdio_fbr_flag
+/*! @brief sdio fbr flag
+ * @anchor _sdio_fbr_flag
+ */
+enum
 {
     kSDIO_FBRSupportCSA            = (1U << 0U), /*!< function support CSA */
     kSDIO_FBRSupportPowerSelection = (1U << 1U), /*!< function support power selection */
@@ -623,13 +656,15 @@ typedef enum _mmc_specification_version
 
 /*! @brief Read the value of FREQUENCY UNIT in TRANSFER SPEED. */
 #define READ_MMC_TRANSFER_SPEED_FREQUENCY_UNIT(CSD) \
-    (((CSD.transferSpeed) & MMC_TRANSFER_SPEED_FREQUENCY_UNIT_MASK) >> MMC_TRANSFER_SPEED_FREQUENCY_UNIT_SHIFT)
+    ((((CSD).transferSpeed) & MMC_TRANSFER_SPEED_FREQUENCY_UNIT_MASK) >> MMC_TRANSFER_SPEED_FREQUENCY_UNIT_SHIFT)
 /*! @brief Read the value of MULTIPLER filed in TRANSFER SPEED. */
 #define READ_MMC_TRANSFER_SPEED_MULTIPLIER(CSD) \
-    (((CSD.transferSpeed) & MMC_TRANSFER_SPEED_MULTIPLIER_MASK) >> MMC_TRANSFER_SPEED_MULTIPLIER_SHIFT)
+    ((((CSD).transferSpeed) & MMC_TRANSFER_SPEED_MULTIPLIER_MASK) >> MMC_TRANSFER_SPEED_MULTIPLIER_SHIFT)
 
-/*! @brief MMC card Extended CSD fix version(EXT_CSD_REV in Extended CSD) */
-enum _mmc_extended_csd_revision
+/*! @brief MMC card Extended CSD fix version(EXT_CSD_REV in Extended CSD)
+ * @anchor _mmc_extended_csd_revision
+ */
+enum
 {
     kMMC_ExtendedCsdRevision10 = 0U, /*!< Revision 1.0 */
     kMMC_ExtendedCsdRevision11 = 1U, /*!< Revision 1.1 */
@@ -651,8 +686,10 @@ typedef enum _mmc_command_set
     kMMC_CommandSet4        = 4U, /*!< Command set 4 */
 } mmc_command_set_t;
 
-/*! @brief boot support(BOOT_INFO in Extended CSD) */
-enum _mmc_support_boot_mode
+/*! @brief boot support(BOOT_INFO in Extended CSD)
+ * @anchor _mmc_support_boot_mode
+ */
+enum
 {
     kMMC_SupportAlternateBoot = 1U, /*!< support alternative boot mode*/
     kMMC_SupportDDRBoot       = 2U, /*!< support DDR boot mode*/
@@ -662,6 +699,10 @@ enum _mmc_support_boot_mode
 #define MMC_POWER_CLASS_4BIT_MASK (0x0FU)
 /*! @brief The power class current value bit mask when bus in 8 bit mode */
 #define MMC_POWER_CLASS_8BIT_MASK (0xF0U)
+/*! @brief mmc cache control enable*/
+#define MMC_CACHE_CONTROL_ENABLE (1U)
+/*! @brief mmc cache flush */
+#define MMC_CACHE_TRIGGER_FLUSH (1U)
 
 /*! @brief MMC card high-speed timing(HS_TIMING in Extended CSD) */
 typedef enum _mmc_high_speed_timing
@@ -733,8 +774,10 @@ typedef enum _mmc_boot_partition_wp
         1U, /*!< permanent write protection apply to partition2, power on period write protection apply to partition1 */
 } mmc_boot_partition_wp_t;
 
-/*! @brief MMC card boot partition write protect status */
-enum _mmc_boot_partition_wp_status
+/*! @brief MMC card boot partition write protect status
+ * @anchor _mmc_boot_partition_wp_status
+ */
+enum
 {
     kMMC_BootPartitionNotProtected  = 0U, /*!< boot partition not protected */
     kMMC_BootPartitionPwrProtected  = 1U, /*!< boot partition is power on period write protected */
@@ -779,8 +822,10 @@ typedef enum _mmc_access_partition
 /*! @brief The bit mask for BOOT MODE field in BOOT CONFIG */
 #define MMC_BOOT_BUS_CONDITION_BOOT_MODE_MASK (0x18U)
 
-/*! @brief MMC card CSD register flags */
-enum _mmc_csd_flag
+/*! @brief MMC card CSD register flags
+ * @anchor _mmc_csd_flag
+ */
+enum
 {
     kMMC_CsdReadBlockPartialFlag         = (1U << 0U),  /*!< Partial blocks for read allowed */
     kMMC_CsdWriteBlockMisalignFlag       = (1U << 1U),  /*!< Write block misalignment */
@@ -807,6 +852,8 @@ typedef enum _mmc_extended_csd_access_mode
 /*! @brief EXT CSD byte index */
 typedef enum _mmc_extended_csd_index
 {
+    kMMC_ExtendedCsdIndexFlushCache           = 32U,  /*!< flush cache */
+    kMMC_ExtendedCsdIndexCacheControl         = 33U,  /*!< cache control */
     kMMC_ExtendedCsdIndexBootPartitionWP      = 173U, /*!< Boot partition write protect */
     kMMC_ExtendedCsdIndexEraseGroupDefinition = 175U, /*!< Erase Group Def */
     kMMC_ExtendedCsdIndexBootBusConditions    = 177U, /*!< Boot Bus conditions */
@@ -818,8 +865,10 @@ typedef enum _mmc_extended_csd_index
     kMMC_ExtendedCsdIndexCommandSet           = 191U, /*!< Command Set */
 } mmc_extended_csd_index_t;
 
-/*! @brief mmc driver strength */
-enum _mmc_driver_strength
+/*! @brief mmc driver strength
+ * @anchor _mmc_driver_strength
+ */
+enum
 {
     kMMC_DriverStrength0 = 0U, /*!< Driver type0 ,nominal impedance 50ohm */
     kMMC_DriverStrength1 = 1U, /*!< Driver type1 ,nominal impedance 33ohm */
@@ -851,7 +900,7 @@ typedef enum _mmc_boot_mode
 #define MMC_EXTENDED_CSD_BYTES (512U)
 
 /*! @brief MMC card default relative address */
-#define MMC_DEFAULT_RELATIVE_ADDRESS (2U)
+#define MMC_DEFAULT_RELATIVE_ADDRESS (2UL)
 
 /*! @brief SD card product name length united as bytes. */
 #define SD_PRODUCT_NAME_BYTES (5U)
@@ -1053,7 +1102,7 @@ typedef struct _mmc_extended_csd
     /*uint8_t ffuStatus;*/                    /*!< FFU status [26]*/
     /*uint8_t modeOperationCode;*/            /*!< mode operation code[29]*/
     /*uint8_t modeConfig;*/                   /*!< mode config [30]*/
-    /*uint8_t cacheCtrl;*/                    /*!< control to turn on/off cache[33]*/
+    uint8_t cacheCtrl;                        /*!< control to turn on/off cache[33]*/
     /*uint8_t pwroffNotify;*/                 /*!< power off notification[34]*/
     /*uint8_t packedCmdFailIndex;*/           /*!< packed cmd fail index [35]*/
     /*uint8_t packedCmdStatus;*/              /*!< packed cmd status[36]*/
@@ -1098,7 +1147,7 @@ typedef struct _mmc_extended_csd
     uint8_t cardType;                         /*!< Card Type [196] */
     uint8_t ioDriverStrength;                 /*!< IO driver strength [197] */
     /*uint8_t OutofInterruptBusyTiming;*/     /*!< out of interrupt busy timing [198] */
-    /*uint8_t partitionSwitchTiming;*/        /*!< partition switch timing [199] */
+    uint8_t partitionSwitchTimeout;           /*!< partition switch timing [199] */
     uint8_t powerClass52MHz195V;              /*!< Power Class for 52MHz @ 1.95V [200] */
     uint8_t powerClass26MHz195V;              /*!< Power Class for 26MHz @ 1.95V [201] */
     uint8_t powerClass52MHz360V;              /*!< Power Class for 52MHz @ 3.6V [202] */
@@ -1136,7 +1185,7 @@ typedef struct _mmc_extended_csd
     /*uint32_t correctPrgSectorNum;*/          /*!< correct prg sectors number[245-242]*/
     /*uint8_t bkOpsStatus;*/                   /*!< background operations status[246]*/
     /*uint8_t powerOffNotifyTimeout;*/         /*!< power off notification timeout[247]*/
-    /*uint8_t genericCMD6Timeout;*/            /*!< generic CMD6 timeout[248]*/
+    uint32_t genericCMD6Timeout;               /*!< generic CMD6 timeout[248]*/
     uint32_t cacheSize;                        /*!< cache size[252-249]*/
     uint8_t powerClass200MHZDDR360V;           /*!< power class for 200MHZ, DDR at VCC=2.6V[253]*/
     /*uint32_t fwVer[2U];*/                    /*!< fw VERSION [261-254]*/

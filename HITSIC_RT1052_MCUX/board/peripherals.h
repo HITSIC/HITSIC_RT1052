@@ -138,11 +138,15 @@ extern "C" {
 #define I2C_1_PERIPHERAL LPI2C1
 /* Definition of clock source */
 #define I2C_1_CLOCK_FREQ 60000000UL
+/* Definition of slave address */
+#define I2C_1_MASTER_SLAVE_ADDRESS 0
 /* RTEPIP_AllPip defines for LPI2C2 */
 /* Definition of peripheral ID */
 #define I2C_2_PERIPHERAL LPI2C2
 /* Definition of clock source */
 #define I2C_2_CLOCK_FREQ 60000000UL
+/* Definition of slave address */
+#define I2C_2_MASTER_SLAVE_ADDRESS 0
 /* RTEPIP_AllPip defines for PIT */
 /* Definition of peripheral ID. */
 #define PIT_PERIPHERAL PIT
@@ -216,6 +220,7 @@ extern FATFS FATFS_System_0;
 /***********************************************************************************************************************
  * Initialization functions
  **********************************************************************************************************************/
+
 void RTEPIP_AllPip(void);
 
 /***********************************************************************************************************************

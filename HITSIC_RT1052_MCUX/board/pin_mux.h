@@ -47,6 +47,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTUP_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTUP_GPIO_PIN                                      27U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTUP_GPIO_PIN_MASK                         (1U << 27U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTUP_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTUP_PIN                                           27U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTUP_PIN_MASK                              (1U << 27U)   /*!< PORT pin mask */
 
 /* GPIO_B1_09 (coord A13), KEY_BTLF */
 /* Routed pin properties */
@@ -58,6 +61,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTLF_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTLF_GPIO_PIN                                      25U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTLF_GPIO_PIN_MASK                         (1U << 25U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTLF_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTLF_PIN                                           25U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTLF_PIN_MASK                              (1U << 25U)   /*!< PORT pin mask */
 
 /* GPIO_B1_10 (coord B13), KEY_BTOK */
 /* Routed pin properties */
@@ -69,6 +75,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTOK_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTOK_GPIO_PIN                                      26U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTOK_GPIO_PIN_MASK                         (1U << 26U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTOK_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTOK_PIN                                           26U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTOK_PIN_MASK                              (1U << 26U)   /*!< PORT pin mask */
 
 /* GPIO_B1_08 (coord A12), KEY_BTRT */
 /* Routed pin properties */
@@ -80,6 +89,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTRT_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTRT_GPIO_PIN                                      24U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTRT_GPIO_PIN_MASK                         (1U << 24U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTRT_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTRT_PIN                                           24U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTRT_PIN_MASK                              (1U << 24U)   /*!< PORT pin mask */
 
 /* GPIO_B1_07 (coord B12), KEY_BTDN */
 /* Routed pin properties */
@@ -91,6 +103,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTDN_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTDN_GPIO_PIN                                      23U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTDN_GPIO_PIN_MASK                         (1U << 23U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTDN_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTDN_PIN                                           23U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTDN_PIN_MASK                              (1U << 23U)   /*!< PORT pin mask */
 
 /* GPIO_B1_06 (coord C12), BEEP_EN */
 /* Routed pin properties */
@@ -102,6 +117,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_BEEP_EN_GPIO                                         GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_BEEP_EN_GPIO_PIN                                       22U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_BEEP_EN_GPIO_PIN_MASK                          (1U << 22U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_BEEP_EN_PORT                                         GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_BEEP_EN_PIN                                            22U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_BEEP_EN_PIN_MASK                               (1U << 22U)   /*!< PORT pin mask */
 
 /* GPIO_B1_05 (coord D12), SERVO_EN */
 /* Routed pin properties */
@@ -113,6 +131,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_SERVO_EN_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_SERVO_EN_GPIO_PIN                                      21U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_SERVO_EN_GPIO_PIN_MASK                         (1U << 21U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_SERVO_EN_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_SERVO_EN_PIN                                           21U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_SERVO_EN_PIN_MASK                              (1U << 21U)   /*!< PORT pin mask */
 
 /* GPIO_B1_04 (coord E12), KEY_BTSE */
 /* Routed pin properties */
@@ -124,6 +145,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTSE_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTSE_GPIO_PIN                                      20U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTSE_GPIO_PIN_MASK                         (1U << 20U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTSE_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTSE_PIN                                           20U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTSE_PIN_MASK                              (1U << 20U)   /*!< PORT pin mask */
 
 /* GPIO_B1_02 (coord C11), MOTOR_EN */
 /* Routed pin properties */
@@ -135,6 +159,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_MOTOR_EN_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_MOTOR_EN_GPIO_PIN                                      18U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_MOTOR_EN_GPIO_PIN_MASK                         (1U << 18U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_MOTOR_EN_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_MOTOR_EN_PIN                                           18U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_MOTOR_EN_PIN_MASK                              (1U << 18U)   /*!< PORT pin mask */
 
 /* GPIO_B1_01 (coord B11), KEY_BTME */
 /* Routed pin properties */
@@ -146,6 +173,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTME_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTME_GPIO_PIN                                      17U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTME_GPIO_PIN_MASK                         (1U << 17U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTME_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTME_PIN                                           17U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTME_PIN_MASK                              (1U << 17U)   /*!< PORT pin mask */
 
 /* GPIO_B0_15 (coord E11), TOF0_XHT */
 /* Routed pin properties */
@@ -157,6 +187,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_TOF0_XHT_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_TOF0_XHT_GPIO_PIN                                      15U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_TOF0_XHT_GPIO_PIN_MASK                         (1U << 15U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_TOF0_XHT_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_TOF0_XHT_PIN                                           15U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_TOF0_XHT_PIN_MASK                              (1U << 15U)   /*!< PORT pin mask */
 
 /* GPIO_B0_14 (coord E10), TOF0_INT */
 /* Routed pin properties */
@@ -168,6 +201,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_TOF0_INT_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_TOF0_INT_GPIO_PIN                                      14U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_TOF0_INT_GPIO_PIN_MASK                         (1U << 14U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_TOF0_INT_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_TOF0_INT_PIN                                           14U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_TOF0_INT_PIN_MASK                              (1U << 14U)   /*!< PORT pin mask */
 
 /* GPIO_B0_13 (coord D10), TOF1_XHT */
 /* Routed pin properties */
@@ -179,6 +215,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_TOF1_XHT_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_TOF1_XHT_GPIO_PIN                                      13U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_TOF1_XHT_GPIO_PIN_MASK                         (1U << 13U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_TOF1_XHT_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_TOF1_XHT_PIN                                           13U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_TOF1_XHT_PIN_MASK                              (1U << 13U)   /*!< PORT pin mask */
 
 /* GPIO_B0_12 (coord C10), TOF1_INT */
 /* Routed pin properties */
@@ -190,6 +229,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_TOF1_INT_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_TOF1_INT_GPIO_PIN                                      12U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_TOF1_INT_GPIO_PIN_MASK                         (1U << 12U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_TOF1_INT_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_TOF1_INT_PIN                                           12U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_TOF1_INT_PIN_MASK                              (1U << 12U)   /*!< PORT pin mask */
 
 /* GPIO_B0_11 (coord A10), PWM2_B2 */
 /* Routed pin properties */
@@ -251,6 +293,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_DISP_BKL_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_DISP_BKL_GPIO_PIN                                       1U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_DISP_BKL_GPIO_PIN_MASK                          (1U << 1U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_DISP_BKL_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_DISP_BKL_PIN                                            1U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_DISP_BKL_PIN_MASK                               (1U << 1U)   /*!< PORT pin mask */
 
 /* GPIO_B0_00 (coord D7), DISP_D_C */
 /* Routed pin properties */
@@ -262,6 +307,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_DISP_D_C_GPIO                                        GPIO2   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_DISP_D_C_GPIO_PIN                                       0U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_DISP_D_C_GPIO_PIN_MASK                          (1U << 0U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_DISP_D_C_PORT                                        GPIO2   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_DISP_D_C_PIN                                            0U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_DISP_D_C_PIN_MASK                               (1U << 0U)   /*!< PORT pin mask */
 
 /* GPIO_B1_12 (coord D13), UART5_TX */
 /* Routed pin properties */
@@ -295,6 +343,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_DISP_RST_GPIO                                        GPIO3   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_DISP_RST_GPIO_PIN                                      27U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_DISP_RST_GPIO_PIN_MASK                         (1U << 27U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_DISP_RST_PORT                                        GPIO3   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_DISP_RST_PIN                                           27U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_DISP_RST_PIN_MASK                              (1U << 27U)   /*!< PORT pin mask */
 
 /* GPIO_SD_B0_00 (coord J4), SDHC_CMD */
 /* Routed pin properties */
@@ -350,6 +401,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_TCS_INT_GPIO                                         GPIO3   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_TCS_INT_GPIO_PIN                                        2U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_TCS_INT_GPIO_PIN_MASK                           (1U << 2U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_TCS_INT_PORT                                         GPIO3   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_TCS_INT_PIN                                             2U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_TCS_INT_PIN_MASK                                (1U << 2U)   /*!< PORT pin mask */
 
 /* GPIO_SD_B1_03 (coord M4), IMU_INT */
 /* Routed pin properties */
@@ -361,6 +415,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_IMU_INT_GPIO                                         GPIO3   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_IMU_INT_GPIO_PIN                                        3U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_IMU_INT_GPIO_PIN_MASK                           (1U << 3U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_IMU_INT_PORT                                         GPIO3   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_IMU_INT_PIN                                             3U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_IMU_INT_PIN_MASK                                (1U << 3U)   /*!< PORT pin mask */
 
 /* GPIO_SD_B1_04 (coord P2), I2C1_SCL */
 /* Routed pin properties */
@@ -450,6 +507,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_CAM_RST_GPIO                                         GPIO1   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_CAM_RST_GPIO_PIN                                       19U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_CAM_RST_GPIO_PIN_MASK                          (1U << 19U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_CAM_RST_PORT                                         GPIO1   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_CAM_RST_PIN                                            19U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_CAM_RST_PIN_MASK                               (1U << 19U)   /*!< PORT pin mask */
 
 /* GPIO_AD_B1_02 (coord L11), MOTOR_IR */
 /* Routed pin properties */
@@ -547,6 +607,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_LED_USR_GPIO                                         GPIO1   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_LED_USR_GPIO_PIN                                        3U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_LED_USR_GPIO_PIN_MASK                           (1U << 3U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_LED_USR_PORT                                         GPIO1   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_LED_USR_PIN                                             3U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_LED_USR_PIN_MASK                                (1U << 3U)   /*!< PORT pin mask */
 
 /* GPIO_AD_B0_02 (coord M11), LED_BUSG */
 /* Routed pin properties */
@@ -558,6 +621,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_LED_BUSG_GPIO                                        GPIO1   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_LED_BUSG_GPIO_PIN                                       2U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_LED_BUSG_GPIO_PIN_MASK                          (1U << 2U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_LED_BUSG_PORT                                        GPIO1   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_LED_BUSG_PIN                                            2U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_LED_BUSG_PIN_MASK                               (1U << 2U)   /*!< PORT pin mask */
 
 /* GPIO_AD_B0_01 (coord H10), KEY_BTUR */
 /* Routed pin properties */
@@ -569,6 +635,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_KEY_BTUS_GPIO                                        GPIO1   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_KEY_BTUS_GPIO_PIN                                       1U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_KEY_BTUS_GPIO_PIN_MASK                          (1U << 1U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_KEY_BTUS_PORT                                        GPIO1   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_KEY_BTUS_PIN                                            1U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_KEY_BTUS_PIN_MASK                               (1U << 1U)   /*!< PORT pin mask */
 
 /* GPIO_AD_B0_00 (coord M14), LED_BUSR */
 /* Routed pin properties */
@@ -580,6 +649,9 @@ void BOARD_InitBootPins(void);
 #define RTEPIN_ALLPIN_LED_BUSR_GPIO                                        GPIO1   /*!< GPIO peripheral base pointer */
 #define RTEPIN_ALLPIN_LED_BUSR_GPIO_PIN                                       0U   /*!< GPIO pin number */
 #define RTEPIN_ALLPIN_LED_BUSR_GPIO_PIN_MASK                          (1U << 0U)   /*!< GPIO pin mask */
+#define RTEPIN_ALLPIN_LED_BUSR_PORT                                        GPIO1   /*!< PORT peripheral base pointer */
+#define RTEPIN_ALLPIN_LED_BUSR_PIN                                            0U   /*!< PORT pin number */
+#define RTEPIN_ALLPIN_LED_BUSR_PIN_MASK                               (1U << 0U)   /*!< PORT pin mask */
 
 /* GPIO_B0_08 (coord B9), PWM2_A1 */
 /* Routed pin properties */

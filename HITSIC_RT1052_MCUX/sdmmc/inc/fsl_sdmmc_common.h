@@ -15,7 +15,8 @@
 #include "stdlib.h"
 
 /*!
- * @addtogroup SDMMC_COMMON
+ * @addtogroup sdmmc_common SDMMC Common
+ * @ingroup card
  * @{
  */
 
@@ -35,7 +36,6 @@
 #define FSL_SDMMC_DEFAULT_BLOCK_SIZE (512U)
 
 /*! @brief make sure the internal buffer address is cache align */
-#if defined(FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL) && FSL_SDK_ENABLE_DRIVER_CACHE_CONTROL
 #if defined(FSL_FEATURE_L1DCACHE_LINESIZE_BYTE)
 #if defined(FSL_FEATURE_L2DCACHE_LINESIZE_BYTE)
 #define SDMMC_DATA_BUFFER_ALIGN_CACHE MAX(FSL_FEATURE_L1DCACHE_LINESIZE_BYTE, FSL_FEATURE_L2DCACHE_LINESIZE_BYTE)
@@ -45,17 +45,14 @@
 #else
 #define SDMMC_DATA_BUFFER_ALIGN_CACHE sizeof(uint32_t)
 #endif
-#else
-#define SDMMC_DATA_BUFFER_ALIGN_CACHE sizeof(uint32_t)
-#endif
 
 /*! @brief sdmmc card internal buffer size */
 #define FSL_SDMMC_CARD_INTERNAL_BUFFER_SIZE (FSL_SDMMC_DEFAULT_BLOCK_SIZE + SDMMC_DATA_BUFFER_ALIGN_CACHE)
-#define FSL_SDMMC_CARD_INTERNAL_BUFFER_ALIGN_ADDR(buffer)          \
-    (uint8_t *)((uint32_t)buffer + SDMMC_DATA_BUFFER_ALIGN_CACHE - \
-                ((uint32_t)buffer & (SDMMC_DATA_BUFFER_ALIGN_CACHE - 1)))
+#define FSL_SDMMC_CARD_INTERNAL_BUFFER_ALIGN_ADDR(buffer)                     \
+    (uint32_t)((uint32_t)(buffer) + (uint32_t)SDMMC_DATA_BUFFER_ALIGN_CACHE - \
+               ((uint32_t)(buffer) & ((uint32_t)SDMMC_DATA_BUFFER_ALIGN_CACHE - 1U)))
 /*! @brief get maximum freq */
-#define FSL_SDMMC_CARD_MAX_BUS_FREQ(max, target) (max == 0U ? target : (max > target ? target : max))
+#define FSL_SDMMC_CARD_MAX_BUS_FREQ(max, target) ((max) == 0U ? (target) : ((max) > (target) ? (target) : (max)))
 /*! @brief SD/MMC error log. */
 #if defined SDMMC_ENABLE_LOG_PRINT
 #include "fsl_debug_console.h"
@@ -64,8 +61,10 @@
 #define SDMMC_LOG(format, ...)
 #endif
 
-/*! @brief SD/MMC card API's running status. */
-enum _sdmmc_status
+/*! @brief SD/MMC card API's running status.
+ *  @anchor _sdmmc_status
+ */
+enum
 {
     kStatus_SDMMC_NotSupportYet             = MAKE_STATUS(kStatusGroup_SDMMC, 0U),  /*!< Haven't supported */
     kStatus_SDMMC_TransferFailed            = MAKE_STATUS(kStatusGroup_SDMMC, 1U),  /*!< Send command failed */
@@ -116,11 +115,17 @@ enum _sdmmc_status
     kStatus_SDMMC_HostNotReady          = MAKE_STATUS(kStatusGroup_SDMMC, 39U), /*!<  host controller not ready */
     kStatus_SDMMC_CardDetectFailed      = MAKE_STATUS(kStatusGroup_SDMMC, 40U), /*!<  card detect failed */
     kStatus_SDMMC_AuSizeNotSetProperly  = MAKE_STATUS(kStatusGroup_SDMMC, 41U), /*!<  AU size not set properly */
-
+    kStatus_SDMMC_PollingCardIdleFailed = MAKE_STATUS(kStatusGroup_SDMMC, 42U), /*!< polling card idle status failed */
+    kStatus_SDMMC_DeselectCardFailed    = MAKE_STATUS(kStatusGroup_SDMMC, 43U), /*!< deselect card failed */
+    kStatus_SDMMC_CardStatusIdle        = MAKE_STATUS(kStatusGroup_SDMMC, 44U), /*!< card idle  */
+    kStatus_SDMMC_CardStatusBusy        = MAKE_STATUS(kStatusGroup_SDMMC, 45U), /*!< card busy */
+    kStatus_SDMMC_CardInitFailed        = MAKE_STATUS(kStatusGroup_SDMMC, 46U), /*!< card init failed */
 };
 
-/*! @brief sdmmc signal line  */
-enum _sdmmc_signal_line
+/*! @brief sdmmc signal line
+ * @anchor _sdmmc_signal_line
+ */
+enum
 {
     kSDMMC_SignalLineCmd   = 1U,   /*!< cmd line */
     kSDMMC_SignalLineData0 = 2U,   /*!< data line */
@@ -142,18 +147,31 @@ typedef enum _sdmmc_operation_voltage
     kSDMMC_OperationVoltage180V = 3U, /*!< card operation voltage around 1.8v */
 } sdmmc_operation_voltage_t;
 
-/*!@brief card bus width */
-enum _sdmmc_bus_width
+/*!@brief card bus width
+ * @anchor _sdmmc_bus_width
+ */
+enum
 {
     kSDMMC_BusWdith1Bit = 0U, /*!< card bus 1 width */
     kSDMMC_BusWdith4Bit = 1U, /*!< card bus 4 width */
     kSDMMC_BusWdith8Bit = 2U, /*!< card bus 8 width */
 };
 
-/*!@brief sdmmc capability flag */
-enum _sdmmc_capability_flag
+/*!@brief sdmmc capability flag
+ * @anchor _sdmmc_capability_flag
+ */
+enum
 {
     kSDMMC_Support8BitWidth = 1U, /*!< 8 bit data width capability */
+};
+
+/*!@ brief sdmmc data packet format
+ * @anchor _sdmmc_data_packet_format
+ */
+enum
+{
+    kSDMMC_DataPacketFormatLSBFirst, /*!< usual data packet format LSB first, MSB last */
+    kSDMMC_DataPacketFormatMSBFirst, /*!< Wide width data packet format MSB first, LSB last */
 };
 
 /*! @brief sd card detect type */
@@ -164,17 +182,29 @@ typedef enum _sd_detect_card_type
     kSD_DetectCardByHostDATA3, /*!< sd card detect by DAT3 pin through host */
 } sd_detect_card_type_t;
 
-/*!@ brief SD card detect status */
-enum _sd_card_cd_status
+/*!@ brief SD card detect status
+ * @anchor _sd_card_cd_status
+ */
+enum
 {
     kSD_Inserted = 1U, /*!< card is inserted*/
     kSD_Removed  = 0U, /*!< card is removed */
+};
+
+/*!@ brief SD card detect status
+ * @anchor _sd_card_dat3_pull_status
+ */
+enum
+{
+    kSD_DAT3PullDown = 0U, /*!< data3 pull down */
+    kSD_DAT3PullUp   = 1U, /*!< data3 pull up */
 };
 
 /*! @brief card detect aoolication callback definition */
 typedef void (*sd_cd_t)(bool isInserted, void *userData);
 /*! @brief card detect status */
 typedef bool (*sd_cd_status_t)(void);
+typedef void (*sd_dat3_pull_t)(uint32_t pullStatus);
 
 /*! @brief sd card detect */
 typedef struct _sd_detect_card
@@ -183,7 +213,9 @@ typedef struct _sd_detect_card
     uint32_t cdDebounce_ms;      /*!< card detect debounce delay ms */
     sd_cd_t callback;            /*!< card inserted callback which is meaningful for interrupt case */
     sd_cd_status_t cardDetected; /*!< used to check sd cd status when card detect through GPIO */
-    void *userData;              /*!< user data */
+    sd_dat3_pull_t dat3PullFunc; /*!< function pointer of DATA3 pull up/down */
+
+    void *userData; /*!< user data */
 } sd_detect_card_t;
 
 /*!@brief io voltage control type*/
@@ -211,7 +243,10 @@ typedef void (*sd_io_strength_t)(uint32_t busFreq);
 /*! @brief sdcard user parameter */
 typedef struct _sd_usr_param
 {
-    sd_pwr_t pwr;                /*!< power control configuration pointer */
+    sd_pwr_t pwr;             /*!< power control configuration pointer */
+    uint32_t powerOnDelayMS;  /*!< power on delay time */
+    uint32_t powerOffDelayMS; /*!< power off delay time */
+
     sd_io_strength_t ioStrength; /*!< swicth sd io strength */
     sd_io_voltage_t *ioVoltage;  /*!< switch io voltage */
     sd_detect_card_t *cd;        /*!< card detect */
@@ -233,7 +268,10 @@ typedef struct _sdio_card_int
 /*! @brief sdio user parameter */
 typedef struct _sdio_usr_param
 {
-    sd_pwr_t pwr;                /*!< power control configuration pointer */
+    sd_pwr_t pwr;             /*!< power control configuration pointer */
+    uint32_t powerOnDelayMS;  /*!< power on delay time */
+    uint32_t powerOffDelayMS; /*!< power off delay time */
+
     sd_io_strength_t ioStrength; /*!< swicth sd io strength */
     sd_io_voltage_t *ioVoltage;  /*!< switch io voltage */
     sd_detect_card_t *cd;        /*!< card detect */

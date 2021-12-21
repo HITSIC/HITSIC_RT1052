@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding= "UTF-8" ?>
-<configuration name="MIMXRT1052xxxxB" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.8 http://mcuxpresso.nxp.com/XSD/mex_configuration_1.8.xsd" uuid="2ba935ab-1e61-4123-af51-62145ec6f781" version="1.8" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_1.8" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<configuration name="MIMXRT1052xxxxB" xsi:schemaLocation="http://mcuxpresso.nxp.com/XSD/mex_configuration_10 http://mcuxpresso.nxp.com/XSD/mex_configuration_10.xsd" uuid="2ba935ab-1e61-4123-af51-62145ec6f781" version="10" xmlns="http://mcuxpresso.nxp.com/XSD/mex_configuration_10" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
    <common>
       <processor>MIMXRT1052xxxxB</processor>
       <package>MIMXRT1052DVL6B</package>
@@ -13,15 +13,16 @@
       <validate_boot_init_only>true</validate_boot_init_only>
       <generate_extended_information>false</generate_extended_information>
       <generate_code_modified_registers_only>false</generate_code_modified_registers_only>
+      <update_include_paths>true</update_include_paths>
    </preferences>
    <tools>
-      <pins name="Pins" version="8.0" enabled="true" update_project_code="true">
+      <pins name="Pins" version="10.0" enabled="true" update_project_code="true">
          <generated_project_files>
             <file path="board/pin_mux.c" update_enabled="true"/>
             <file path="board/pin_mux.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
-            <processor_version>8.0.2</processor_version>
+            <processor_version>10.0.0</processor_version>
             <power_domains/>
             <pin_labels>
                <pin_label pin_num="J1" pin_signal="GPIO_SD_B0_02" label="SDHC_D0" identifier="SDHC_D0"/>
@@ -985,13 +986,13 @@
             </function>
          </functions_list>
       </pins>
-      <clocks name="Clocks" version="7.0" enabled="true" update_project_code="false">
+      <clocks name="Clocks" version="8.0" enabled="true" update_project_code="false">
          <generated_project_files>
             <file path="board/clock_config.c" update_enabled="true"/>
             <file path="board/clock_config.h" update_enabled="true"/>
          </generated_project_files>
          <clocks_profile>
-            <processor_version>8.0.2</processor_version>
+            <processor_version>10.0.0</processor_version>
          </clocks_profile>
          <clock_configurations>
             <clock_configuration name="RTECLK_Run600M">
@@ -1151,7 +1152,7 @@
             <file path="board/dcd.h" update_enabled="true"/>
          </generated_project_files>
          <dcdx_profile>
-            <processor_version>8.0.2</processor_version>
+            <processor_version>10.0.0</processor_version>
             <output_format>c_array</output_format>
          </dcdx_profile>
          <dcdx_configurations>
@@ -1326,7 +1327,7 @@
             </dcdx_configuration>
          </dcdx_configurations>
       </dcdx>
-      <periphs name="Peripherals" version="8.0" enabled="true" update_project_code="true">
+      <periphs name="Peripherals" version="10.0" enabled="true" update_project_code="true">
          <dependencies>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.adc_12b1msps_sar" description="工具链/IDE工程中未找到ADC Driver。工程不会被编译！" problem_level="2" source="Peripherals">
                <feature name="enabled" evaluation="equal">
@@ -1424,7 +1425,7 @@
                </feature>
             </dependency>
             <dependency resourceType="SWComponent" resourceId="platform.drivers.lpspi" description="工具链/IDE工程不支持LPSPI Driver版本。所需值: ${required_value}, 实际值: ${actual_value}. 工程可能没有被正确编译。" problem_level="1" source="Peripherals">
-               <feature name="version" evaluation="equivalent">
+               <feature name="version" evaluation="greaterOrEqual">
                   <data type="Version">2.0.3</data>
                </feature>
             </dependency>
@@ -1455,7 +1456,7 @@
             <file path="source/ffconf.h" update_enabled="true"/>
          </generated_project_files>
          <peripherals_profile>
-            <processor_version>8.0.2</processor_version>
+            <processor_version>10.0.0</processor_version>
          </peripherals_profile>
          <functional_groups>
             <functional_group name="RTEPIP_AllPip" uuid="2044a05e-031b-4d67-ac4b-e5d523c13eda" called_from_default_init="true" id_prefix="" core="core0">
@@ -1649,7 +1650,7 @@
                   </dependency>
                </dependencies>
                <instances>
-                  <instance name="ADC_1" uuid="7a226e72-0aa1-438f-84c3-b7b13e44ea7a" type="adc_12b1msps_sar" type_id="adc_12b1msps_sar_6a490e886349a7b2b07bed10ce7b299b" mode="ADC_GENERAL" peripheral="ADC1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="ADC_1" uuid="7a226e72-0aa1-438f-84c3-b7b13e44ea7a" type="adc_12b1msps_sar" type_id="adc_12b1msps_sar_6a490e886349a7b2b07bed10ce7b299b" mode="ADC_GENERAL" peripheral="ADC1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_adc">
                         <struct name="clockConfig">
                            <setting name="clockSource" value="kADC_ClockSourceAD"/>
@@ -1689,7 +1690,7 @@
                         <array name="adc_channels_config"/>
                      </config_set>
                   </instance>
-                  <instance name="AOI" uuid="72c08846-0ef1-42a1-8ca0-dd679d1d16cc" type="aoi" type_id="aoi_5a2efbfd7a8a5208f8f552077e2b4ded" mode="AOI" peripheral="AOI1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="AOI" uuid="72c08846-0ef1-42a1-8ca0-dd679d1d16cc" type="aoi" type_id="aoi_5a2efbfd7a8a5208f8f552077e2b4ded" mode="AOI" peripheral="AOI1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_aoi">
                         <array name="events">
                            <struct name="0">
@@ -1815,7 +1816,7 @@
                         </array>
                      </config_set>
                   </instance>
-                  <instance name="CMP_1" uuid="5deaa407-7417-488a-82b4-0289ccc6e401" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="CMP_1" uuid="5deaa407-7417-488a-82b4-0289ccc6e401" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_filter">
                         <struct name="filter_config">
                            <set name="filteringOptions">
@@ -1848,7 +1849,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CMP_2" uuid="dd230c97-5f39-4cad-8155-91ae4364d761" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP2" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="CMP_2" uuid="dd230c97-5f39-4cad-8155-91ae4364d761" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP2" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_filter">
                         <struct name="filter_config">
                            <set name="filteringOptions">
@@ -1881,7 +1882,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CMP_3" uuid="0d9f9cf0-e217-4e65-96b4-2fb2aa6cbba8" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP3" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="CMP_3" uuid="0d9f9cf0-e217-4e65-96b4-2fb2aa6cbba8" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP3" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_filter">
                         <struct name="filter_config">
                            <set name="filteringOptions">
@@ -1914,7 +1915,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CMP_4" uuid="27884fbe-582b-4034-837e-9ba5a4f5413b" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP4" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="CMP_4" uuid="27884fbe-582b-4034-837e-9ba5a4f5413b" type="cmp" type_id="cmp_306724f57b92dbe1771f1514089d2b18" mode="polling" peripheral="CMP4" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_filter">
                         <struct name="filter_config">
                            <set name="filteringOptions">
@@ -1947,7 +1948,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="CSI" uuid="66bb460d-ca8a-4a17-9eb9-209c00b323dd" type="csi" type_id="csi_b2cf1faba8074e676ac4be93ec552c5a" mode="interrupt" peripheral="CSI" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="CSI" uuid="66bb460d-ca8a-4a17-9eb9-209c00b323dd" type="csi" type_id="csi_b2cf1faba8074e676ac4be93ec552c5a" mode="interrupt" peripheral="CSI" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_csi">
                         <struct name="clockConfig">
                            <setting name="clockSource" value="BusInterfaceClock"/>
@@ -1989,7 +1990,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="EDMA" uuid="75fa8491-600e-466f-80f2-3bbf1976b2a9" type="edma" type_id="edma_a23fca76a894e1bcdf9d01a687505ff9" mode="basic" peripheral="DMA0" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="EDMA" uuid="75fa8491-600e-466f-80f2-3bbf1976b2a9" type="edma" type_id="edma_a23fca76a894e1bcdf9d01a687505ff9" mode="basic" peripheral="DMA0" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_edma" quick_selection="default">
                         <struct name="common_settings">
                            <setting name="enableContinuousLinkMode" value="false"/>
@@ -2001,7 +2002,7 @@
                         <array name="edma_channels"/>
                      </config_set>
                   </instance>
-                  <instance name="ENC_1" uuid="910f3a46-5afc-4817-9fcf-88cf512e3847" type="enc" type_id="enc_a31ae546b0cbfc3aa2c35851e1fcb3b8" mode="general" peripheral="ENC1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="ENC_1" uuid="910f3a46-5afc-4817-9fcf-88cf512e3847" type="enc" type_id="enc_a31ae546b0cbfc3aa2c35851e1fcb3b8" mode="general" peripheral="ENC1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_enc" quick_selection="QuickSelection1">
                         <struct name="config">
                            <struct name="clockConfig_t">
@@ -2034,11 +2035,35 @@
                            </struct>
                         </struct>
                         <struct name="interruptsCfg">
-                           <setting name="isInterruptEnabled" value="false"/>
                            <set name="interruptSources">
                               <selected/>
                            </set>
+                           <setting name="isInterruptEnabled" value="false"/>
                            <struct name="interrupt">
+                              <setting name="IRQn" value="ENC1_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_home_irq" value="false"/>
+                           <struct name="interrupt_home">
+                              <setting name="IRQn" value="ENC1_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_wdog_irq" value="false"/>
+                           <struct name="interrupt_wdog">
+                              <setting name="IRQn" value="ENC1_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_index_irq" value="false"/>
+                           <struct name="interrupt_index">
                               <setting name="IRQn" value="ENC1_IRQn"/>
                               <setting name="enable_interrrupt" value="enabled"/>
                               <setting name="enable_priority" value="false"/>
@@ -2048,7 +2073,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="ENC_2" uuid="0f6ad7f2-096f-480b-9800-19422642ea54" type="enc" type_id="enc_a31ae546b0cbfc3aa2c35851e1fcb3b8" mode="general" peripheral="ENC2" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="ENC_2" uuid="0f6ad7f2-096f-480b-9800-19422642ea54" type="enc" type_id="enc_a31ae546b0cbfc3aa2c35851e1fcb3b8" mode="general" peripheral="ENC2" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_enc" quick_selection="QuickSelection1">
                         <struct name="config">
                            <struct name="clockConfig_t">
@@ -2081,11 +2106,35 @@
                            </struct>
                         </struct>
                         <struct name="interruptsCfg">
-                           <setting name="isInterruptEnabled" value="false"/>
                            <set name="interruptSources">
                               <selected/>
                            </set>
+                           <setting name="isInterruptEnabled" value="false"/>
                            <struct name="interrupt">
+                              <setting name="IRQn" value="ENC2_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_home_irq" value="false"/>
+                           <struct name="interrupt_home">
+                              <setting name="IRQn" value="ENC2_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_wdog_irq" value="false"/>
+                           <struct name="interrupt_wdog">
+                              <setting name="IRQn" value="ENC2_IRQn"/>
+                              <setting name="enable_interrrupt" value="enabled"/>
+                              <setting name="enable_priority" value="false"/>
+                              <setting name="priority" value="0"/>
+                              <setting name="enable_custom_name" value="false"/>
+                           </struct>
+                           <setting name="enable_index_irq" value="false"/>
+                           <struct name="interrupt_index">
                               <setting name="IRQn" value="ENC2_IRQn"/>
                               <setting name="enable_interrrupt" value="enabled"/>
                               <setting name="enable_priority" value="false"/>
@@ -2095,7 +2144,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="GPIO_1" uuid="28fa8a28-6992-40c7-9916-0daf97370d56" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="GPIO_1" uuid="28fa8a28-6992-40c7-9916-0daf97370d56" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_gpio">
                         <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
@@ -2181,7 +2230,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="GPIO_2" uuid="132dd1e1-ecdf-4238-a3b4-bf90a500d61f" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO2" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="GPIO_2" uuid="132dd1e1-ecdf-4238-a3b4-bf90a500d61f" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO2" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_gpio">
                         <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
@@ -2203,7 +2252,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="GPIO_3" uuid="148baaa3-2270-4821-b3af-c6680a19d087" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO3" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="GPIO_3" uuid="148baaa3-2270-4821-b3af-c6680a19d087" type="igpio" type_id="igpio_b1c1fa279aa7069dca167502b8589cb7" mode="GPIO" peripheral="GPIO3" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_gpio">
                         <setting name="enable_irq_comb_0_15" value="true"/>
                         <struct name="gpio_interrupt_comb_0_15">
@@ -2225,7 +2274,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="I2C_1" uuid="6377f454-63f7-46f0-b5db-0b9885a57b89" type="lpi2c" type_id="lpi2c_db68d4f4f06a22e25ab51fe9bd6db4d2" mode="master" peripheral="LPI2C1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="I2C_1" uuid="6377f454-63f7-46f0-b5db-0b9885a57b89" type="lpi2c" type_id="lpi2c_db68d4f4f06a22e25ab51fe9bd6db4d2" mode="master" peripheral="LPI2C1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="main" quick_selection="qs_interrupt">
                         <setting name="clockSource" value="Lpi2cClock"/>
                         <setting name="clockSourceFreq" value="RTECLK_Run600M"/>
@@ -2261,7 +2310,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="I2C_2" uuid="da026bd7-2066-4857-be52-31c53f5a3066" type="lpi2c" type_id="lpi2c_db68d4f4f06a22e25ab51fe9bd6db4d2" mode="master" peripheral="LPI2C2" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="I2C_2" uuid="da026bd7-2066-4857-be52-31c53f5a3066" type="lpi2c" type_id="lpi2c_db68d4f4f06a22e25ab51fe9bd6db4d2" mode="master" peripheral="LPI2C2" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="main" quick_selection="qs_interrupt">
                         <setting name="clockSource" value="Lpi2cClock"/>
                         <setting name="clockSourceFreq" value="RTECLK_Run600M"/>
@@ -2297,7 +2346,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="PIT" uuid="b6b13f8c-a647-4c1f-b640-bc4150d1a599" type="pit" type_id="pit_a4782ba5223c8a2527ba91aeb2bc4159" mode="LPTMR_GENERAL" peripheral="PIT" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="PIT" uuid="b6b13f8c-a647-4c1f-b640-bc4150d1a599" type="pit" type_id="pit_a4782ba5223c8a2527ba91aeb2bc4159" mode="LPTMR_GENERAL" peripheral="PIT" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="fsl_pit">
                         <setting name="enableRunInDebug" value="true"/>
                         <setting name="enableSharedInterrupt" value="true"/>
@@ -2341,7 +2390,7 @@
                         </array>
                      </config_set>
                   </instance>
-                  <instance name="SPI_4" uuid="60aacf4a-d4e6-419a-94bb-af3a82eaf1aa" type="lpspi" type_id="lpspi_6e21a1e0a09f0a012d683c4f91752db8" mode="polling" peripheral="LPSPI4" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="SPI_4" uuid="60aacf4a-d4e6-419a-94bb-af3a82eaf1aa" type="lpspi" type_id="lpspi_6e21a1e0a09f0a012d683c4f91752db8" mode="polling" peripheral="LPSPI4" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="main">
                         <setting name="mode" value="kLPSPI_Master"/>
                         <setting name="clockSource" value="LpspiClock"/>
@@ -2365,9 +2414,15 @@
                            <setting name="txWatermark" value="0"/>
                            <setting name="rxWatermark" value="0"/>
                         </struct>
+                        <setting name="allPcsPolarityEnable" value="false"/>
+                        <struct name="allPcsPolarity">
+                           <setting name="kLPSPI_Pcs1Active" value="kLPSPI_PcsActiveHigh"/>
+                           <setting name="kLPSPI_Pcs2Active" value="kLPSPI_PcsActiveHigh"/>
+                           <setting name="kLPSPI_Pcs3Active" value="kLPSPI_PcsActiveHigh"/>
+                        </struct>
                      </config_set>
                   </instance>
-                  <instance name="UART_1" uuid="ec3b43a2-9fc7-4c06-b567-a5e2c0308890" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART1" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="UART_1" uuid="ec3b43a2-9fc7-4c06-b567-a5e2c0308890" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART1" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="lpuartConfig_t" quick_selection="QuickSelection1">
                         <struct name="lpuartConfig">
                            <setting name="clockSource" value="LpuartClock"/>
@@ -2390,7 +2445,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="UART_4" uuid="b796793a-f2fd-4eff-8cb6-21d5d4e85356" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART4" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="UART_4" uuid="b796793a-f2fd-4eff-8cb6-21d5d4e85356" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART4" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="lpuartConfig_t" quick_selection="QuickSelection1">
                         <struct name="lpuartConfig">
                            <setting name="clockSource" value="LpuartClock"/>
@@ -2413,7 +2468,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="UART_5" uuid="fba8becb-d98d-4bb5-a4e0-9c2309e33939" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART5" enabled="true" comment="" custom_name_enabled="true">
+                  <instance name="UART_5" uuid="fba8becb-d98d-4bb5-a4e0-9c2309e33939" type="lpuart" type_id="lpuart_bebe3e12b6ec22bbd14199038f2bf459" mode="polling" peripheral="LPUART5" enabled="true" comment="" custom_name_enabled="true" editing_lock="false">
                      <config_set name="lpuartConfig_t" quick_selection="QuickSelection1">
                         <struct name="lpuartConfig">
                            <setting name="clockSource" value="LpuartClock"/>
@@ -2436,7 +2491,7 @@
                         </struct>
                      </config_set>
                   </instance>
-                  <instance name="FATFS" uuid="f3ec9e2e-9791-4aa3-8f6f-c71ffbb104de" type="fatfs" type_id="fatfs_2f85acf758668258920f70258052a088" mode="general" enabled="true" comment="" custom_name_enabled="false">
+                  <instance name="FATFS" uuid="f3ec9e2e-9791-4aa3-8f6f-c71ffbb104de" type="fatfs" type_id="fatfs_2f85acf758668258920f70258052a088" mode="general" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
                      <config_set name="init_config" quick_selection="default">
                         <struct name="initConfig">
                            <setting name="initPartitionsStr" value="false"/>
@@ -2470,7 +2525,7 @@
                         </struct>
                      </config_set>
                      <config_set name="ff_config" quick_selection="default">
-                        <setting name="revisionID" value="rev14_1"/>
+                        <setting name="revisionID" value="rev14_2"/>
                         <setting name="MSDKadaptation" value="RAM_DISK_ENABLE"/>
                         <struct name="functionConfig">
                            <setting name="FF_FS_READONLY" value="false"/>
@@ -2521,7 +2576,7 @@
                            <setting name="FF_MIN_SS" value="value512"/>
                            <setting name="FF_MAX_SS" value="value512"/>
                            <setting name="FF_LBA64" value="false"/>
-                           <setting name="FF_MIN_GPT" value="0x100000000"/>
+                           <setting name="FF_MIN_GPT" value="0x10000000"/>
                            <setting name="FF_USE_TRIM" value="false"/>
                         </struct>
                         <struct name="systemConfig">
@@ -2544,6 +2599,21 @@
                         <struct name="fatfs_codegenerator"/>
                      </config_set>
                   </instance>
+                  <instance name="NVIC" uuid="bcd2e4a9-1b27-43e3-82c0-b41633359f93" type="nvic" type_id="nvic_57b5eef3774cc60acaede6f5b8bddc67" mode="general" peripheral="NVIC" enabled="true" comment="" custom_name_enabled="false" editing_lock="false">
+                     <config_set name="nvic">
+                        <array name="interrupt_table">
+                           <struct name="0"/>
+                           <struct name="1"/>
+                           <struct name="2"/>
+                           <struct name="3"/>
+                           <struct name="4"/>
+                           <struct name="5"/>
+                           <struct name="6"/>
+                           <struct name="7"/>
+                        </array>
+                        <array name="interrupts"/>
+                     </config_set>
+                  </instance>
                </instances>
             </functional_group>
          </functional_groups>
@@ -2563,6 +2633,12 @@
             <component name="generic_can" uuid="f361d9d1-1f74-4e0e-be76-83a6a558c491" type_id="generic_can_1bfdd78b1af214566c1f23cf6a582d80">
                <config_set_global name="global_can"/>
             </component>
+            <component name="uart_cmsis_common" uuid="bfc42f8e-a0bd-48fe-8f86-4a83e7585e17" type_id="uart_cmsis_common_9cb8e302497aa696fdbb5a4fd622c2a8">
+               <config_set_global name="global_USART_CMSIS_common" quick_selection="default"/>
+            </component>
+            <component name="generic_enet" uuid="a3ce75ac-dff2-4856-9316-4f0e133c1649" type_id="generic_enet_74db5c914f0ddbe47d86af40cb77a619">
+               <config_set_global name="global_enet"/>
+            </component>
          </components>
       </periphs>
       <tee name="TEE" version="2.0" enabled="false" update_project_code="true">
@@ -2570,8 +2646,6 @@
          <tee_profile>
             <processor_version>N/A</processor_version>
          </tee_profile>
-         <global_options/>
-         <user_memory_regions/>
       </tee>
    </tools>
 </configuration>

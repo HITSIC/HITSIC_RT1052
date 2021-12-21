@@ -13,18 +13,18 @@
 #if defined(XIP_BOOT_HEADER_ENABLE) && (XIP_BOOT_HEADER_ENABLE == 1)
 #if defined(XIP_BOOT_HEADER_DCD_ENABLE) && (XIP_BOOT_HEADER_DCD_ENABLE == 1)
 #if defined(__CC_ARM) || defined(__ARMCC_VERSION) || defined(__GNUC__)
-__attribute__((section(".boot_hdr.dcd_data")))
+__attribute__((section(".boot_hdr.dcd_data"), used))
 #elif defined(__ICCARM__)
 #pragma location = ".boot_hdr.dcd_data"
 #endif
 
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: DCDx V2.0
+product: DCDx v3.0
 processor: MIMXRT1052xxxxB
 package_id: MIMXRT1052DVL6B
 mcu_data: ksdk2_0
-processor_version: 8.0.2
+processor_version: 10.0.0
 output_format: c_array
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* COMMENTS BELOW ARE USED AS SETTINGS FOR DCD DATA */

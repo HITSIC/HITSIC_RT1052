@@ -6,11 +6,11 @@
 /* clang-format off */
 /* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
 !!GlobalInfo
-product: Peripherals v8.0
+product: Peripherals v10.0
 processor: MIMXRT1052xxxxB
 package_id: MIMXRT1052DVL6B
 mcu_data: ksdk2_0
-processor_version: 8.0.2
+processor_version: 10.0.0
 functionalGroups:
 - name: RTEPIP_AllPip
   UUID: 2044a05e-031b-4d67-ac4b-e5d523c13eda
@@ -25,6 +25,14 @@ component:
 - global_system_definitions:
   - user_definitions: ''
   - user_includes: ''
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+component:
+- type: 'uart_cmsis_common'
+- type_id: 'uart_cmsis_common_9cb8e302497aa696fdbb5a4fd622c2a8'
+- global_USART_CMSIS_common:
+  - quick_selection: 'default'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 
@@ -68,8 +76,9 @@ const edma_config_t EDMA_config = {
   .enableDebugMode = false
 };
 
+/* Empty initialization function (commented out)
 static void EDMA_init(void) {
-}
+} */
 
 /***********************************************************************************************************************
  * ADC_1 initialization code
@@ -625,10 +634,10 @@ static void CSI_init(void) {
   CSI_Init(CSI_PERIPHERAL, &CSI_config);
   /* CSI enable selected interrupts */
   CSI_EnableInterrupts(CSI_PERIPHERAL, kCSI_EndOfFrameInterruptEnable);
-  /* Interrupt vector CSI_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(CSI_IRQn, CSI_IRQ_PRIORITY);
-  /* Enable interrupt CSI_IRQn request in the NVIC */
-  EnableIRQ(CSI_IRQn);
+  /* Interrupt vector CSI_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(CSI_IRQN, CSI_IRQ_PRIORITY);
+  /* Enable interrupt CSI_IRQn request in the NVIC. */
+  EnableIRQ(CSI_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -668,9 +677,30 @@ instance:
       - filter_config_t:
         - enableFilter: 'false'
     - interruptsCfg:
-      - isInterruptEnabled: 'false'
       - interruptSources: ''
+      - isInterruptEnabled: 'false'
       - interrupt:
+        - IRQn: 'ENC1_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_home_irq: 'false'
+      - interrupt_home:
+        - IRQn: 'ENC1_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_wdog_irq: 'false'
+      - interrupt_wdog:
+        - IRQn: 'ENC1_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_index_irq: 'false'
+      - interrupt_index:
         - IRQn: 'ENC1_IRQn'
         - enable_interrrupt: 'enabled'
         - enable_priority: 'false'
@@ -741,9 +771,30 @@ instance:
       - filter_config_t:
         - enableFilter: 'false'
     - interruptsCfg:
-      - isInterruptEnabled: 'false'
       - interruptSources: ''
+      - isInterruptEnabled: 'false'
       - interrupt:
+        - IRQn: 'ENC2_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_home_irq: 'false'
+      - interrupt_home:
+        - IRQn: 'ENC2_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_wdog_irq: 'false'
+      - interrupt_wdog:
+        - IRQn: 'ENC2_IRQn'
+        - enable_interrrupt: 'enabled'
+        - enable_priority: 'false'
+        - priority: '0'
+        - enable_custom_name: 'false'
+      - enable_index_irq: 'false'
+      - interrupt_index:
         - IRQn: 'ENC2_IRQn'
         - enable_interrrupt: 'enabled'
         - enable_priority: 'false'
@@ -869,14 +920,14 @@ instance:
 
 static void GPIO_1_init(void) {
   /* Make sure, the clock gate for GPIO1 is enabled (e. g. in pin_mux.c) */
-  /* Interrupt vector GPIO1_Combined_0_15_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO1_Combined_0_15_IRQn, GPIO_1_GPIO_COMB_0_15_IRQ_PRIORITY);
-  /* Enable interrupt GPIO1_Combined_0_15_IRQn request in the NVIC */
-  EnableIRQ(GPIO1_Combined_0_15_IRQn);
-  /* Interrupt vector GPIO1_Combined_16_31_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO1_Combined_16_31_IRQn, GPIO_1_GPIO_COMB_16_31_IRQ_PRIORITY);
-  /* Enable interrupt GPIO1_Combined_16_31_IRQn request in the NVIC */
-  EnableIRQ(GPIO1_Combined_16_31_IRQn);
+  /* Interrupt vector GPIO1_Combined_0_15_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_1_GPIO_COMB_0_15_IRQN, GPIO_1_GPIO_COMB_0_15_IRQ_PRIORITY);
+  /* Enable interrupt GPIO1_Combined_0_15_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_1_GPIO_COMB_0_15_IRQN);
+  /* Interrupt vector GPIO1_Combined_16_31_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_1_GPIO_COMB_16_31_IRQN, GPIO_1_GPIO_COMB_16_31_IRQ_PRIORITY);
+  /* Enable interrupt GPIO1_Combined_16_31_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_1_GPIO_COMB_16_31_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -915,14 +966,14 @@ instance:
 
 static void GPIO_2_init(void) {
   /* Make sure, the clock gate for GPIO2 is enabled (e. g. in pin_mux.c) */
-  /* Interrupt vector GPIO2_Combined_0_15_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO2_Combined_0_15_IRQn, GPIO_2_GPIO_COMB_0_15_IRQ_PRIORITY);
-  /* Enable interrupt GPIO2_Combined_0_15_IRQn request in the NVIC */
-  EnableIRQ(GPIO2_Combined_0_15_IRQn);
-  /* Interrupt vector GPIO2_Combined_16_31_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO2_Combined_16_31_IRQn, GPIO_2_GPIO_COMB_16_31_IRQ_PRIORITY);
-  /* Enable interrupt GPIO2_Combined_16_31_IRQn request in the NVIC */
-  EnableIRQ(GPIO2_Combined_16_31_IRQn);
+  /* Interrupt vector GPIO2_Combined_0_15_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_2_GPIO_COMB_0_15_IRQN, GPIO_2_GPIO_COMB_0_15_IRQ_PRIORITY);
+  /* Enable interrupt GPIO2_Combined_0_15_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_2_GPIO_COMB_0_15_IRQN);
+  /* Interrupt vector GPIO2_Combined_16_31_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_2_GPIO_COMB_16_31_IRQN, GPIO_2_GPIO_COMB_16_31_IRQ_PRIORITY);
+  /* Enable interrupt GPIO2_Combined_16_31_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_2_GPIO_COMB_16_31_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -961,14 +1012,14 @@ instance:
 
 static void GPIO_3_init(void) {
   /* Make sure, the clock gate for GPIO3 is enabled (e. g. in pin_mux.c) */
-  /* Interrupt vector GPIO3_Combined_0_15_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO3_Combined_0_15_IRQn, GPIO_3_GPIO_COMB_0_15_IRQ_PRIORITY);
-  /* Enable interrupt GPIO3_Combined_0_15_IRQn request in the NVIC */
-  EnableIRQ(GPIO3_Combined_0_15_IRQn);
-  /* Interrupt vector GPIO3_Combined_16_31_IRQn priority settings in the NVIC */
-  NVIC_SetPriority(GPIO3_Combined_16_31_IRQn, GPIO_3_GPIO_COMB_16_31_IRQ_PRIORITY);
-  /* Enable interrupt GPIO3_Combined_16_31_IRQn request in the NVIC */
-  EnableIRQ(GPIO3_Combined_16_31_IRQn);
+  /* Interrupt vector GPIO3_Combined_0_15_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_3_GPIO_COMB_0_15_IRQN, GPIO_3_GPIO_COMB_0_15_IRQ_PRIORITY);
+  /* Enable interrupt GPIO3_Combined_0_15_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_3_GPIO_COMB_0_15_IRQN);
+  /* Interrupt vector GPIO3_Combined_16_31_IRQn priority settings in the NVIC. */
+  NVIC_SetPriority(GPIO_3_GPIO_COMB_16_31_IRQN, GPIO_3_GPIO_COMB_16_31_IRQ_PRIORITY);
+  /* Enable interrupt GPIO3_Combined_16_31_IRQn request in the NVIC. */
+  EnableIRQ(GPIO_3_GPIO_COMB_16_31_IRQN);
 }
 
 /***********************************************************************************************************************
@@ -1021,11 +1072,11 @@ const lpi2c_master_config_t I2C_1_masterConfig = {
   .debugEnable = false,
   .ignoreAck = false,
   .pinConfig = kLPI2C_2PinPushPull,
-  .baudRate_Hz = 400000,
-  .busIdleTimeout_ns = 0,
-  .pinLowTimeout_ns = 0,
-  .sdaGlitchFilterWidth_ns = 0,
-  .sclGlitchFilterWidth_ns = 0,
+  .baudRate_Hz = 400000UL,
+  .busIdleTimeout_ns = 0UL,
+  .pinLowTimeout_ns = 0UL,
+  .sdaGlitchFilterWidth_ns = 0U,
+  .sclGlitchFilterWidth_ns = 0U,
   .hostRequest = {
     .enable = false,
     .source = kLPI2C_HostRequestExternalPin,
@@ -1087,11 +1138,11 @@ const lpi2c_master_config_t I2C_2_masterConfig = {
   .debugEnable = false,
   .ignoreAck = false,
   .pinConfig = kLPI2C_2PinPushPull,
-  .baudRate_Hz = 400000,
-  .busIdleTimeout_ns = 0,
-  .pinLowTimeout_ns = 0,
-  .sdaGlitchFilterWidth_ns = 0,
-  .sclGlitchFilterWidth_ns = 0,
+  .baudRate_Hz = 400000UL,
+  .busIdleTimeout_ns = 0UL,
+  .pinLowTimeout_ns = 0UL,
+  .sdaGlitchFilterWidth_ns = 0U,
+  .sclGlitchFilterWidth_ns = 0U,
   .hostRequest = {
     .enable = false,
     .source = kLPI2C_HostRequestExternalPin,
@@ -1163,7 +1214,7 @@ static void PIT_init(void) {
   PIT_Init(PIT_PERIPHERAL, &PIT_config);
   /* Set channel 0 period to 1 µs (75 ticks). */
   PIT_SetTimerPeriod(PIT_PERIPHERAL, PIT_0, PIT_0_TICKS);
-  /* Set channel 1 period to 1.895 m (8527897872 ticks). */
+  /* Set channel 1 period to 1.193 h (322122547125 ticks). */
   PIT_SetTimerPeriod(PIT_PERIPHERAL, PIT_1, PIT_1_TICKS);
   /* Chain the channel 1 to channel 0. */
   PIT_SetTimerChainMode(PIT_PERIPHERAL, PIT_1, true);
@@ -1218,17 +1269,22 @@ instance:
     - fifoWaterMarks:
       - txWatermark: '0'
       - rxWatermark: '0'
+    - allPcsPolarityEnable: 'false'
+    - allPcsPolarity:
+      - kLPSPI_Pcs1Active: 'kLPSPI_PcsActiveHigh'
+      - kLPSPI_Pcs2Active: 'kLPSPI_PcsActiveHigh'
+      - kLPSPI_Pcs3Active: 'kLPSPI_PcsActiveHigh'
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 const lpspi_master_config_t SPI_4_config = {
-  .baudRate = 1000000,
-  .bitsPerFrame = 8,
+  .baudRate = 1000000UL,
+  .bitsPerFrame = 8UL,
   .cpol = kLPSPI_ClockPolarityActiveHigh,
   .cpha = kLPSPI_ClockPhaseFirstEdge,
   .direction = kLPSPI_MsbFirst,
-  .pcsToSckDelayInNanoSec = 1000,
-  .lastSckToPcsDelayInNanoSec = 1000,
-  .betweenTransferDelayInNanoSec = 1000,
+  .pcsToSckDelayInNanoSec = 1000UL,
+  .lastSckToPcsDelayInNanoSec = 1000UL,
+  .betweenTransferDelayInNanoSec = 1000UL,
   .whichPcs = kLPSPI_Pcs0,
   .pcsActiveHighOrLow = kLPSPI_PcsActiveLow,
   .pinCfg = kLPSPI_SdiInSdoOut,
@@ -1276,13 +1332,13 @@ instance:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 const lpuart_config_t UART_1_config = {
-  .baudRate_Bps = 115200,
+  .baudRate_Bps = 115200UL,
   .parityMode = kLPUART_ParityDisabled,
   .dataBitsCount = kLPUART_EightDataBits,
   .isMsb = false,
   .stopBitCount = kLPUART_OneStopBit,
-  .txFifoWatermark = 0,
-  .rxFifoWatermark = 1,
+  .txFifoWatermark = 0U,
+  .rxFifoWatermark = 1U,
   .enableRxRTS = false,
   .enableTxCTS = false,
   .txCtsSource = kLPUART_CtsSourcePin,
@@ -1334,13 +1390,13 @@ instance:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 const lpuart_config_t UART_4_config = {
-  .baudRate_Bps = 115200,
+  .baudRate_Bps = 115200UL,
   .parityMode = kLPUART_ParityDisabled,
   .dataBitsCount = kLPUART_EightDataBits,
   .isMsb = false,
   .stopBitCount = kLPUART_OneStopBit,
-  .txFifoWatermark = 0,
-  .rxFifoWatermark = 1,
+  .txFifoWatermark = 0U,
+  .rxFifoWatermark = 1U,
   .enableRxRTS = false,
   .enableTxCTS = false,
   .txCtsSource = kLPUART_CtsSourcePin,
@@ -1392,13 +1448,13 @@ instance:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 const lpuart_config_t UART_5_config = {
-  .baudRate_Bps = 115200,
+  .baudRate_Bps = 115200UL,
   .parityMode = kLPUART_ParityDisabled,
   .dataBitsCount = kLPUART_EightDataBits,
   .isMsb = false,
   .stopBitCount = kLPUART_OneStopBit,
-  .txFifoWatermark = 0,
-  .rxFifoWatermark = 1,
+  .txFifoWatermark = 0U,
+  .rxFifoWatermark = 1U,
   .enableRxRTS = false,
   .enableTxCTS = false,
   .txCtsSource = kLPUART_CtsSourcePin,
@@ -1412,6 +1468,38 @@ const lpuart_config_t UART_5_config = {
 static void UART_5_init(void) {
   LPUART_Init(UART_5_PERIPHERAL, &UART_5_config, UART_5_CLOCK_SOURCE);
 }
+
+/***********************************************************************************************************************
+ * NVIC initialization code
+ **********************************************************************************************************************/
+/* clang-format off */
+/* TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+instance:
+- name: 'NVIC'
+- type: 'nvic'
+- mode: 'general'
+- custom_name_enabled: 'false'
+- type_id: 'nvic_57b5eef3774cc60acaede6f5b8bddc67'
+- functional_group: 'RTEPIP_AllPip'
+- peripheral: 'NVIC'
+- config_sets:
+  - nvic:
+    - interrupt_table:
+      - 0: []
+      - 1: []
+      - 2: []
+      - 3: []
+      - 4: []
+      - 5: []
+      - 6: []
+      - 7: []
+    - interrupts: []
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
+/* clang-format on */
+
+/* Empty initialization function (commented out)
+static void NVIC_init(void) {
+} */
 
 /***********************************************************************************************************************
  * FATFS initialization code
@@ -1452,7 +1540,7 @@ instance:
       - dirObjects: []
     - quick_selection: 'default'
   - ff_config:
-    - revisionID: 'rev14_1'
+    - revisionID: 'rev14_2'
     - MSDKadaptation: 'RAM_DISK_ENABLE'
     - functionConfig:
       - FF_FS_READONLY: 'false'
@@ -1494,7 +1582,7 @@ instance:
       - FF_MIN_SS: 'value512'
       - FF_MAX_SS: 'value512'
       - FF_LBA64: 'false'
-      - FF_MIN_GPT: '0x100000000'
+      - FF_MIN_GPT: '0x10000000'
       - FF_USE_TRIM: 'false'
     - systemConfig:
       - FF_FS_TINY: 'false'
@@ -1517,8 +1605,9 @@ instance:
 /* FATFS System object */
 FATFS FATFS_System_0;
 
+/* Empty initialization function (commented out)
 static void FATFS_init(void) {
-}
+} */
 
 /***********************************************************************************************************************
  * Initialization functions
@@ -1530,7 +1619,6 @@ void RTEPIP_AllPip(void)
   EDMA_Init(EDMA_DMA_BASEADDR, &EDMA_config);
 
   /* Initialize components */
-  EDMA_init();
   ADC_1_init();
   AOI_init();
   CMP_1_init();
@@ -1550,7 +1638,6 @@ void RTEPIP_AllPip(void)
   UART_1_init();
   UART_4_init();
   UART_5_init();
-  FATFS_init();
 }
 
 /***********************************************************************************************************************

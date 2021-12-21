@@ -121,9 +121,9 @@ int main(void)
 
     HAL_ExitCritical();
 
-//    st7789_t::getInst().setup();
-//    st7789_t::getInst().setBKL(1);
-//    st7789_t::getInst().fill(0xffff);
+    st7789_t::getInst().setup();
+    st7789_t::getInst().setBKL(1);
+    st7789_t::getInst().fill(0xffff);
 
 //    flash_test();
 
